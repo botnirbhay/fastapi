@@ -12,4 +12,11 @@ SessionLocal=sessionmaker(bind=engine,autoflush=False,autocommit=False)
 # now create a declarative base instance
 Base=declarative_base()
 
+def get_db():
+    db=SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
 
